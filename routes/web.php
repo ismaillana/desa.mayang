@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.users.base');
 });
+
+Route::get('/dashboard', function () {
+    return view('layouts.admin.base');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::group(
+        [
+            'middleware'    => ['role:admin'],
+            'prefix'        => 'admin'
+        ],
+        function () {
+            
+    });
+});
